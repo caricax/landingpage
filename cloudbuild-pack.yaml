@@ -1,0 +1,59 @@
+steps:
+  # Build da aplicação Angular
+  - name: 'node:20-alpine'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        npm ci
+        npm run build
+    id: 'build-app'
+
+  # Build usando Cloud Build pack (buildpacks)
+  - name: 'gcr.io/k8s-skaffold/pack'
+    args:
+      - 'build'
+      - '--builder=gcr.io/buildpacks/builder:v1'
+      - '--env=GOOGLE_RUNTIME=nodejs'
+      - 'gcr.io/$PROJECT_ID/caricax-landing:$BUILD_ID'
+      - '.'
+    id: 'build-pack'
+    waitFor: ['build-app']
+
+  # Deploy no Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'caricax-landing'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/caricax-landing:$BUILD_ID'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--port'
+      - '8080'
+      - '--memory'
+      - '1Gi'
+      - '--cpu'
+      - '1'
+      - '--min-instances'
+      - '0'
+      - '--max-instances'
+      - '10'
+      - '--set-env-vars'
+      - 'NODE_ENV=production'
+    id: 'deploy-cloudrun'
+    waitFor: ['build-pack']
+
+# Configurações de timeout e logging
+options:
+  logging: CLOUD_LOGGING_ONLY
+  machineType: 'E2_HIGHCPU_8'
+
+timeout: '1200s'
+
+images:
+  - 'gcr.io/$PROJECT_ID/caricax-landing:$BUILD_ID'

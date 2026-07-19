@@ -1,0 +1,19 @@
+runtime: nodejs20
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 10
+
+env_variables:
+  NODE_ENV: production
+
+handlers:
+  - url: /.*
+    static_files: dist/caricax-landing/browser/\1
+    upload: dist/caricax-landing/browser/.*
+    secure: always
+
+  - url: /
+    static_files: dist/caricax-landing/browser/index.html
+    upload: dist/caricax-landing/browser/index.html
+    secure: always
