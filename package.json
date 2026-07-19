@@ -1,6 +1,6 @@
 {
   "name": "caricax-landing",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -8,17 +8,13 @@
     "build": "ng build",
     "build:gh-pages": "ng build --configuration github-pages",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
-  "prettier": {
-    "overrides": [
-      {
-        "files": "*.html",
-        "options": {
-          "parser": "angular"
-        }
-      }
-    ]
+    "test": "ng test",
+    "test:ci": "ng test --no-watch --no-progress --browsers=ChromeHeadless",
+    "lint": "eslint src/ --ext .ts",
+    "format": "prettier --check src/",
+    "format:fix": "prettier --write src/",
+    "prebuild": "npm run lint && npm run format:fix",
+    "validate": "npm run lint && npm run format && npm run test:ci && npm run build"
   },
   "private": true,
   "dependencies": {

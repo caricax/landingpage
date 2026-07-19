@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48" width="240" height="48" role="img" aria-label="CARICAX">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&amp;display=swap');
+      /* font: 'Noto Serif', serif */
     </style>
     <linearGradient id="wg" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#fe6d03"/>

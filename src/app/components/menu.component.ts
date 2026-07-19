@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../services/language.service';
 import { MenuService } from '../services/menu.service';
@@ -8,6 +8,7 @@ import { ContentModalService, OpenContentModalType } from '../services/content-m
   selector: 'app-menu',
   standalone: true,
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <!-- Menu Sidebar Responsivo com Detalhes Neon -->
     <div class="h-full w-72 sm:w-80 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-r shadow-2xl animate-slide-in"

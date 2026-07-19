@@ -41,8 +41,7 @@ src/
 │   │   ├── menu.service.ts
 │   │   ├── content-modal.service.ts
 │   │   ├── email.service.ts
-│   │   ├── devtools-recruitment.service.ts
-│   │   └── translation.service.ts
+│   │   └── devtools-recruitment.service.ts
 │   ├── pipes/                 # Angular pipes
 │   │   └── markdown.pipe.ts
 │   └── data/                  # Static data
@@ -84,11 +83,12 @@ app.ts
 
 ## Internationalization Strategy
 
-- 4 languages: PT-BR, EN, ES, DE
+- 6 languages: PT, EN, ES, DE, FR, RU
 - Translation keys stored in `LanguageService.translations` as nested records
 - Fallback chain: `current → en → pt → raw key`
-- Long texts (>100 chars) normalized and cached in `normalizedLongTextCache`
+- Long texts (>100 chars) normalized and cached in `normalizedLongTextCache` (O(1) lookup)
 - `navigator.language` detected on first visit; persisted to localStorage
+- Language map indexed via `Map<string, Language>` for O(1) access by code
 
 ## Styling Architecture
 

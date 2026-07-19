@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../services/language.service';
 import { RouterModule, Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { MarkdownPipe } from '../pipes/markdown.pipe';
   selector: 'app-branding-guidelines',
   standalone: true,
   imports: [CommonModule, RouterModule, MarkdownPipe],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="min-h-screen bg-gray-50 dark:bg-black text-gray-900 dark:text-gray-100">
       <!-- Back nav -->
@@ -344,8 +345,8 @@ import { MarkdownPipe } from '../pipes/markdown.pipe';
               <div class="grid sm:grid-cols-2 gap-6">
                 <div class="bg-gray-50 dark:bg-gray-800/30 rounded-xl border border-gray-200 dark:border-gray-800 p-6 sm:p-8">
                   <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 font-brand">Tailwind Usage</h3>
-                  <div class="font-hack text-xs text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-wrap">&lt;h1 class="<span class="text-caricax-green">font-brand</span> <span class="text-caricax-orange">text-fluid-4xl</span>"&gt;
-  &lbrace;&lbrace; 'brand.name' | translate &rbrace;&rbrace;
+                  <div ngNonBindable class="font-hack text-xs text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-wrap">&lt;h1 class="<span class="text-caricax-green">font-brand</span> <span class="text-caricax-orange">text-fluid-4xl</span>"&gt;
+  {{ 'brand.name' | translate }}
 &lt;/h1&gt;
 
 &lt;p class="<span class="text-caricax-green">font-hack</span> <span class="text-caricax-orange">text-fluid-base</span>"&gt;

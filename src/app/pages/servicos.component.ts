@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../services/language.service';
 
@@ -6,6 +6,7 @@ import { LanguageService } from '../services/language.service';
   selector: 'app-servicos',
   standalone: true,
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="px-6 py-8 max-w-7xl mx-auto">
       <!-- Header Section -->
@@ -140,12 +141,12 @@ import { LanguageService } from '../services/language.service';
                   <h4 class="font-brand font-bold text-gray-800 mb-2">WordPress</h4>
                   <p class="text-sm font-hack text-gray-600">{{ getTranslation('services.technology.wordpress') }}</p>
                 </div>
-                <!-- Google Cloud -->
+                <!-- Cloud Infrastructure -->
                 <div class="text-center">
                   <div class="w-16 h-16 bg-blue-500 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <div class="text-2xl font-brand font-bold text-white">GCP</div>
+                    <div class="text-2xl font-brand font-bold text-white">CLD</div>
                   </div>
-                  <h4 class="font-brand font-bold text-gray-800 mb-2">Google Cloud</h4>
+                  <h4 class="font-brand font-bold text-gray-800 mb-2">Cloud</h4>
                   <p class="text-sm font-hack text-gray-600">{{ getTranslation('services.technology.gcp') }}</p>
                 </div>
               </div>
@@ -265,7 +266,7 @@ export class ServicosComponent {
         'services.modules.partnerships.title': 'Parcerias Estratégicas',
         'services.modules.partnerships.description': 'Integração de ferramentas recomendadas (Stone, Hostinger, GCP) que agregam valor ao seu negócio e geram receita adicional através de parcerias transparentes.',
         'services.modules.traffic.title': 'Gestão de Tráfego',
-        'services.modules.traffic.description': 'Campanhas de anúncios (Google Ads, Meta Ads) e criação de conteúdo para redes sociais, direcionando tráfego qualificado para sua presença digital.',
+        'services.modules.traffic.description': 'Campanhas de anúncios (Search Ads, Social Ads) e criação de conteúdo para redes sociais, direcionando tráfego qualificado para sua presença digital.',
         'services.technology.title': 'Tecnologia & Infraestrutura',
         'services.technology.hostinger': 'Hospedagem otimizada com excelente custo-benefício',
         'services.technology.wordpress': 'CMS intuitivo para gestão autônoma de conteúdo',
@@ -295,7 +296,7 @@ export class ServicosComponent {
         'services.modules.partnerships.title': 'Strategic Partnerships',
         'services.modules.partnerships.description': 'Integration of recommended tools (Stone, Hostinger, GCP) that add value to your business and generate additional revenue through transparent partnerships.',
         'services.modules.traffic.title': 'Traffic Management',
-        'services.modules.traffic.description': 'Ad campaigns (Google Ads, Meta Ads) and social media content creation, directing qualified traffic to your digital presence.',
+        'services.modules.traffic.description': 'Ad campaigns (Search Ads, Social Ads) and social media content creation, directing qualified traffic to your digital presence.',
         'services.technology.title': 'Technology & Infrastructure',
         'services.technology.hostinger': 'Optimized hosting with excellent cost-benefit',
         'services.technology.wordpress': 'Intuitive CMS for autonomous content management',
@@ -325,7 +326,7 @@ export class ServicosComponent {
         'services.modules.partnerships.title': 'Asociaciones Estratégicas',
         'services.modules.partnerships.description': 'Integración de herramientas recomendadas (Stone, Hostinger, GCP) que agregan valor a tu negocio y generan ingresos adicionales a través de asociaciones transparentes.',
         'services.modules.traffic.title': 'Gestión de Tráfico',
-        'services.modules.traffic.description': 'Campañas publicitarias (Google Ads, Meta Ads) y creación de contenido para redes sociales, dirigiendo tráfico calificado a tu presencia digital.',
+        'services.modules.traffic.description': 'Campañas publicitarias (Search Ads, Social Ads) y creación de contenido para redes sociales, dirigiendo tráfico calificado a tu presencia digital.',
         'services.technology.title': 'Tecnología e Infraestructura',
         'services.technology.hostinger': 'Hosting optimizado con excelente costo-beneficio',
         'services.technology.wordpress': 'CMS intuitivo para gestión autónoma de contenido',

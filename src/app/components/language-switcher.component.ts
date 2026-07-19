@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../services/language.service';
 
@@ -6,6 +6,7 @@ import { LanguageService } from '../services/language.service';
   selector: 'app-language-switcher',
   standalone: true,
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg border border-gray-300/30 dark:border-gray-600/30 shadow-sm">
       <button 

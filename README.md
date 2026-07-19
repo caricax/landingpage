@@ -29,7 +29,7 @@ Plataforma institucional da CARICAX: landing page com terminais interativos, man
 | Tipografia    | Noto Serif (brand) + Hack (UI)      |
 | Ícones        | SVG inline                          |
 | Testes        | Jasmine + Karma (ChromeHeadless)    |
-| Deploy        | GitHub Pages / Firebase / Docker    |
+| Deploy        | GitHub Pages / Docker               |
 
 ## Arquitetura
 
@@ -92,7 +92,6 @@ A aplicação segue arquitetura Angular standalone com componentes modulares:
 
 ```bash
 ng deploy --base-href=/caricax-production-spa/
-firebase deploy --only hosting
 docker build -t caricax-spa .
 ```
 
@@ -131,7 +130,7 @@ Plataforma institucional de CARICAX: landing page con terminales interactivos, m
 | Tipografía     | Noto Serif (brand) + Hack (UI)       |
 | Iconos         | SVG inline                           |
 | Tests          | Jasmine + Karma (ChromeHeadless)     |
-| Deploy         | GitHub Pages / Firebase / Docker     |
+| Deploy         | GitHub Pages / Docker               |
 
 ## Arquitectura
 
@@ -153,7 +152,6 @@ MIT License, LGPD, GDPR, términos de uso, cookies.
 
 ```bash
 ng deploy --base-href=/caricax-production-spa/
-firebase deploy --only hosting
 docker build -t caricax-spa .
 ```
 
@@ -174,7 +172,7 @@ CARICAX institutional platform: landing page with interactive terminals, manifes
 | Typography     | Noto Serif (brand) + Hack (UI)       |
 | Icons          | Inline SVG                           |
 | Testing        | Jasmine + Karma (ChromeHeadless)     |
-| Deploy         | GitHub Pages / Firebase / Docker     |
+| Deploy         | GitHub Pages / Docker               |
 
 ## Architecture
 
@@ -196,6 +194,5 @@ MIT License, LGPD, GDPR, terms of use, cookies.
 
 ```bash
 ng deploy --base-href=/caricax-production-spa/
-firebase deploy --only hosting
 docker build -t caricax-spa .
 ```

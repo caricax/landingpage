@@ -1,4 +1,4 @@
-import { Component, inject, signal, computed, OnInit, OnDestroy, effect, ViewEncapsulation } from '@angular/core';
+import { Component, inject, signal, computed, OnInit, OnDestroy, effect, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService, Language } from '../services/language.service';
 import { AccessibilityService } from '../services/accessibility.service';
@@ -9,6 +9,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   standalone: true,
   imports: [CommonModule],
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="w-full max-w-6xl 2xl:max-w-7xl mx-auto responsive-pad terminal-fade-in"
          [class.visible]="isVisible()">

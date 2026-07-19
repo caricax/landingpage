@@ -3,15 +3,16 @@
 ## Overview
 
 Single-page application (SPA) for CARICAX institutional landing page.
-Architected as a client-side rendered Angular 19 application with zero
-server dependencies beyond static file hosting.
+Architected as a client-side rendered Angular 20 application with zero
+server dependencies beyond static file hosting. All components use
+`ChangeDetectionStrategy.OnPush` to minimize change detection cycles.
 
 ## System Context
 
 ```
 ┌──────────────┐     ┌──────────────────┐     ┌──────────────┐
 │   Browser    │────→│  GitHub Pages    │────→│  Static SPA  │
-│  (Client)    │←────│  / Firebase      │←────│  (Angular)   │
+│  (Client)    │←────│  GitHub Pages    │←────│  (Angular)   │
 └──────────────┘     └──────────────────┘     └──────────────┘
        │                                              │
        │  External                                    │ Internal
@@ -20,7 +21,7 @@ server dependencies beyond static file hosting.
 │   LinkedIn   │                            │  ThemeService    │
 │  (Contact)   │                            │  LanguageService │
 └──────────────┘                            │  MenuService     │
-                                            │  ModalService    │
+                                             │  ContentModal    │
                                             └──────────────────┘
 ```
 
@@ -107,10 +108,12 @@ All state is managed via Angular signals (no NgRx or external store):
 
 ## Performance Budget
 
-- **Bundle size:** < 500KB gzip
-- **First Contentful Paint:** < 1.5s
-- **Time to Interactive:** < 2.5s
-- **Lighthouse score:** > 90 (all categories)
+| Metric               | Target    | Current (Jul 2026) |
+|----------------------|-----------|-------------------|
+| Initial bundle (gzip)| < 200kB   | 169.70 kB         |
+| Initial bundle (raw) | < 750kB   | 723.88 kB         |
+| AnyComponentStyle    | < 10kB    | 4.55 kB           |
+| Test pass rate       | 100%      | 14/14             |
 
 ## Security Constraints
 

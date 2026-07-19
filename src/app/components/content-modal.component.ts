@@ -1,4 +1,4 @@
-import { Component, inject, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
+import { Component, inject, ElementRef, ViewChild, AfterViewInit, HostListener, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentModalService, ContentModalType } from '../services/content-modal.service';
 import { AccessibilityService } from '../services/accessibility.service';
@@ -37,6 +37,7 @@ type ModalTitleTranslationKey =
   selector: 'app-content-modal',
   standalone: true,
   imports: [CommonModule, BrandingGuidelinesComponent, ServicosComponent, LabutAiComponent, RescisaoFacilComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '(document:keydown.escape)': 'onEscapeKey()'
   },

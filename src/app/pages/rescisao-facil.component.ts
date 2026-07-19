@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../services/language.service';
 
@@ -6,6 +6,7 @@ import { LanguageService } from '../services/language.service';
   selector: 'app-rescisao-facil',
   standalone: true,
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="max-w-4xl mx-auto p-6 sm:p-8 font-hack text-gray-800 dark:text-gray-200">
       <div class="mb-8 text-center">

@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-learn-more-form',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-3 sm:p-4">
       <div class="bg-white dark:bg-gray-900 rounded-lg shadow-2xl max-w-md w-full overflow-hidden mx-auto">

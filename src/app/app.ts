@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, HostListener, effect } from '@angular/core';
+import { Component, inject, OnInit, HostListener, effect, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -17,6 +17,7 @@ import { AccessibilityService } from './services/accessibility.service';
 @Component({
   selector: 'app-root',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
     MenuComponent,
