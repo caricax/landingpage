@@ -1,0 +1,91 @@
+{
+  "configVersion": 1,
+  "timestamp": 1784538648473,
+  "index": "/landingpage/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/landingpage/chunk-2OQRVAP3.js",
+        "/landingpage/chunk-A6X2ORDJ.js",
+        "/landingpage/chunk-HSOVILDD.js",
+        "/landingpage/chunk-N7OGLVQ5.js",
+        "/landingpage/chunk-SSMPOABA.js",
+        "/landingpage/chunk-UIPBRLSU.js",
+        "/landingpage/chunk-ZJ42425W.js",
+        "/landingpage/index.html",
+        "/landingpage/main-5KGCHXHC.js",
+        "/landingpage/manifest.webmanifest",
+        "/landingpage/polyfills-B6TNHZQ6.js",
+        "/landingpage/styles-4D55NH6X.css"
+      ],
+      "patterns": [
+        "https:\\/\\/fonts\\.googleapis\\.com\\/css2\\?family=Inter:wght@400;500;700&display=swap"
+      ]
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/landingpage/caricax-logo.ico",
+        "/landingpage/caricax-wordmark-compact.svg",
+        "/landingpage/caricax-wordmark.svg",
+        "/landingpage/new-caricax-logo.ico",
+        "/landingpage/new-caricax-logo.png",
+        "/landingpage/pwa-icon-192.svg",
+        "/landingpage/pwa-icon-512.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/landingpage/caricax-logo.ico": "3c587dcbb6baafcfe0ae1339da779132a5af1bff",
+    "/landingpage/caricax-wordmark-compact.svg": "019b73f2777d5785b2f5a2410b14d1f1bdf5b53f",
+    "/landingpage/caricax-wordmark.svg": "baef754786527fae32fb53e98bbe18b8c1eae955",
+    "/landingpage/chunk-2OQRVAP3.js": "2de9c70792f8fdd53b1879eb9c7f1ab1d578f3e8",
+    "/landingpage/chunk-A6X2ORDJ.js": "eebb9e4361cb658e4c7ca026577268dec0c6abf1",
+    "/landingpage/chunk-HSOVILDD.js": "0701e5c19145b2cda83b259994c31e2b75c22661",
+    "/landingpage/chunk-N7OGLVQ5.js": "3753215d6183ce92d98301e2c5fb9e1ca1e7b760",
+    "/landingpage/chunk-SSMPOABA.js": "0ab1ff4bacb5bdc6a62df05fafcb4f1d9ef05a3f",
+    "/landingpage/chunk-UIPBRLSU.js": "65c1e3900421ddc5a5702cbf1b95887024e672d3",
+    "/landingpage/chunk-ZJ42425W.js": "5f093a0ed06679ddf8d207a5e3fa46d6cd9d7571",
+    "/landingpage/index.html": "de0ae837c1a43802fc1f54c4bff254818c70e897",
+    "/landingpage/main-5KGCHXHC.js": "65bb5ed53a884e0fa4cff1446b8ae5df8f84b53f",
+    "/landingpage/manifest.webmanifest": "2840fafacd63c17e1e68d05c9ce0ec7edc724574",
+    "/landingpage/new-caricax-logo.ico": "547a0629433118fa43a011d4f60e345e22718789",
+    "/landingpage/new-caricax-logo.png": "22ef547a41aa3f23728c06f36860b8a31681f177",
+    "/landingpage/polyfills-B6TNHZQ6.js": "bf76ac291d7f51c1139b7edcf86b359a30c08c64",
+    "/landingpage/pwa-icon-192.svg": "a7daca152d378cafd174c600566a726bc7a13a8c",
+    "/landingpage/pwa-icon-512.svg": "63bce2c3b2e23167d911fe4fa5de0114036e5211",
+    "/landingpage/styles-4D55NH6X.css": "f6d2a007345de4fb57adc321f1b272e5d609fd6c"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
