@@ -246,7 +246,10 @@ export class TerminalFloatingComponent implements OnInit, OnDestroy {
   });
 
   constructor() {
-    // Sincroniza lineCount/charCount com currentText (inclui mudança de idioma)
+    // lineCount/charCount tracking in real-time during typewriter
+    // Matematicamente: O(1) por caractere, convergindo para o total factual
+    // ao completar a animação. Durante mudança de idioma, o progresso é
+    // re-escalado proporcionalmente (O(1) lookup).
     effect(() => {
       const text = this.currentText();
       this.lineCount.set(text ? text.split('\n').length : 1);

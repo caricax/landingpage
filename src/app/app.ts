@@ -248,6 +248,11 @@ export class App implements OnInit {
   }
 
   onSupport(): void {
+    const lang = this.translationService.currentLanguage().code;
+    if (lang === 'pt') {
+      this.contentModalService.openModal('pix');
+      return;
+    }
     document.getElementById('community-support')?.scrollIntoView({
       behavior: 'smooth',
       block: 'start'

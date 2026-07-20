@@ -21,6 +21,7 @@ export type ContentModalType =
   | 'legal-cookies'
   | 'legal-lgpd'
   | 'legal-mit'
+  | 'pix'
   | null;
 
 export type OpenContentModalType = Exclude<ContentModalType, null>;
