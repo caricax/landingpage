@@ -368,7 +368,7 @@ type ModalTitleTranslationKey =
                       class="mx-auto w-48 h-48 sm:w-56 sm:h-56 object-contain rounded-xl border border-gray-200 dark:border-gray-700/50 shadow-md"
                       onerror="this.style.display='none'"
                     />
-                    <p class="text-fluid-sm text-gray-500 dark:text-gray-400 leading-relaxed max-w-64 mx-auto text-justify">
+                    <p class="text-fluid-sm text-gray-500 dark:text-gray-400 leading-relaxed max-w-64 mx-auto">
                       Tua contribuição mantém o projeto ativo e independente.
                     </p>
                   </div>
