@@ -63,6 +63,9 @@
             },
             "github-pages": {
               "baseHref": "/caricax-production-spa/",
+            },
+            "pages": {
+              "baseHref": "/landingpage/",
               "optimization": {
                 "scripts": true,
                 "styles": true,
