@@ -33,6 +33,11 @@
 
   <!-- Hreflang / International SEO (single URL, language-negotiated) -->
   <link rel="alternate" hreflang="x-default" href="https://caricax.github.io/landingpage/">
+  <link rel="alternate" hreflang="pt" href="https://caricax.github.io/landingpage/">
+  <link rel="alternate" hreflang="en" href="https://caricax.github.io/landingpage/">
+  <link rel="alternate" hreflang="es" href="https://caricax.github.io/landingpage/">
+  <link rel="alternate" hreflang="de" href="https://caricax.github.io/landingpage/">
+  <link rel="alternate" hreflang="fr" href="https://caricax.github.io/landingpage/">
   <link rel="alternate" hreflang="ru" href="https://caricax.github.io/landingpage/">
   <link rel="alternate" hreflang="tr" href="https://caricax.github.io/landingpage/"><!-- Yandex Turkey reach -->
 
@@ -89,6 +94,69 @@
   }
   </script>
 
+  <!-- FAQPage schema for AEO / AI Overviews -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://caricax.github.io/landingpage/#faq",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "O que é Software as a Right?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Software as a Right é o conceito de que software de qualidade deve ser um direito universal, não um privilégio. A CARICAX desenvolve soluções de TI acessíveis e open source para Micro e Pequenas Empresas (MPEs), democratizando tecnologia que historicamente fica atrás de paywalls."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quais serviços a CARICAX oferece?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Desenvolvimento de software sob medida, consultoria em transformação digital, soluções open source, segurança digital e infraestrutura de TI para pequenas e médias empresas. Também criamos produtos como o labut.ai e a calculadora Rescisão Fácil."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como contratar a CARICAX?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Entre em contato pelo LinkedIn em linkedin.com/company/caricax. Nossa equipe está baseada em Florianópolis, Santa Catarina, e atendemos clientes em todo o Brasil."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O que significa CARICAX?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CARICAX é a junção de 'Carica' (referência a Carianos, bairro de Florianópolis) e 'X' (tecnologia, inovação). A marca representa nossa raiz local na Sul da Ilha e nosso compromisso com inovação tecnológica acessível."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "A CARICAX é open source?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim. Todo software desenvolvido pela CARICAX é open source sob licença MIT. Acreditamos que o código aberto é fundamental para a democratização da tecnologia e para a construção de soluções transparentes e auditáveis."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList schema for rich snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": "https://caricax.github.io/landingpage/#breadcrumb",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://caricax.github.io/landingpage/" }
+    ]
+  }
+  </script>
+
   <meta name="theme-color" content="#28aa6a">
   <link rel="icon" type="image/x-icon" href="new-caricax-logo.ico">
   <link rel="icon" type="image/png" href="new-caricax-logo.png">
@@ -99,7 +167,9 @@
   <!-- Fonts: Noto Serif (headers) + Hack (UI) -->
   <!-- Self-hosted font: Noto Serif via CSS fallback -->
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css" media="print" onload="this.media='all'">
 
   <!-- Security Script - Source Protection -->
   <script>

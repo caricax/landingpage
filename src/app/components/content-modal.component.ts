@@ -77,24 +77,40 @@ type ModalTitleTranslationKey =
           <div class="overflow-y-auto max-h-[calc(90dvh-80px)]">
             @switch (contentModalService.activeModal()) {
               @case ('branding-guidelines') {
-                <div class="p-0">
-                  <app-branding-guidelines [inModal]="true"></app-branding-guidelines>
-                </div>
+                @defer (when contentModalService.activeModal() === 'branding-guidelines') {
+                  <div class="p-0">
+                    <app-branding-guidelines [inModal]="true"></app-branding-guidelines>
+                  </div>
+                } @placeholder {
+                  <div class="p-8 text-center text-gray-400">Carregando...</div>
+                }
               }
               @case ('services') {
-                <div class="p-0">
-                  <app-servicos></app-servicos>
-                </div>
+                @defer (when contentModalService.activeModal() === 'services') {
+                  <div class="p-0">
+                    <app-servicos></app-servicos>
+                  </div>
+                } @placeholder {
+                  <div class="p-8 text-center text-gray-400">Carregando...</div>
+                }
               }
               @case ('labut-ai') {
-                <div class="p-0">
-                  <app-labut-ai></app-labut-ai>
-                </div>
+                @defer (when contentModalService.activeModal() === 'labut-ai') {
+                  <div class="p-0">
+                    <app-labut-ai></app-labut-ai>
+                  </div>
+                } @placeholder {
+                  <div class="p-8 text-center text-gray-400">Carregando...</div>
+                }
               }
               @case ('rescisao-facil') {
-                <div class="p-0">
-                  <app-rescisao-facil></app-rescisao-facil>
-                </div>
+                @defer (when contentModalService.activeModal() === 'rescisao-facil') {
+                  <div class="p-0">
+                    <app-rescisao-facil></app-rescisao-facil>
+                  </div>
+                } @placeholder {
+                  <div class="p-8 text-center text-gray-400">Carregando...</div>
+                }
               }
               @case ('legal-compliance') {
                 <div class="p-4 sm:p-6 md:p-8">
@@ -352,6 +368,28 @@ type ModalTitleTranslationKey =
                   </div>
                 </div>
               }
+              @case ('pix') {
+                <div class="p-6 sm:p-8 md:p-10 text-center">
+                  <div class="max-w-xs mx-auto space-y-6">
+                    <h3 class="text-fluid-sm sm:text-fluid-base font-brand font-bold text-gray-800 dark:text-gray-200 uppercase tracking-widest">CHAVE PIX</h3>
+                    <div class="w-16 h-16 mx-auto bg-gradient-to-br from-green-500 to-green-700 rounded-2xl flex items-center justify-center shadow-lg">
+                      <svg aria-hidden="true" class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                    </div>
+                    <p class="text-fluid-lg sm:text-fluid-xl font-mono font-bold text-caricax-green select-all">54.222.825/0001-80</p>
+                    <img
+                      src="pix-qr-code.png"
+                      alt="QR Code PIX CHAVE 54.222.825/0001-80"
+                      class="mx-auto w-48 h-48 sm:w-56 sm:h-56 object-contain rounded-xl border border-gray-200 dark:border-gray-700/50 shadow-md"
+                      onerror="this.style.display='none'"
+                    />
+                    <p class="text-fluid-sm text-gray-500 dark:text-gray-400 leading-relaxed max-w-64 mx-auto">
+                      Tua contribuição mantém o projeto ativo e independente.
+                    </p>
+                  </div>
+                </div>
+              }
             }
           </div>
         </div>
@@ -413,7 +451,8 @@ export class ContentModalComponent implements AfterViewInit {
     'legal-terms': 'legal.terms.title',
     'legal-cookies': 'legal.cookies.title',
     'legal-lgpd': 'legal.lgpd.title',
-    'legal-mit': 'legal.mit.title'
+    'legal-mit': 'legal.mit.title',
+    'pix': 'menu.support'
   };
 
   onEscapeKey(): void {

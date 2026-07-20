@@ -11,10 +11,10 @@ import { ContentModalService, OpenContentModalType } from '../services/content-m
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <!-- Menu Sidebar Responsivo com Detalhes Neon -->
-    <div class="h-full w-72 sm:w-80 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-r shadow-2xl animate-slide-in"
+    <div class="h-full w-72 sm:w-80 flex flex-col bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-r shadow-2xl animate-slide-in"
          style="border-color: rgba(40, 170, 106, 0.2);">
       <!-- Menu Header -->
-      <div class="p-3 sm:p-4 md:p-6 border-b animate-fade-in"
+      <div class="shrink-0 p-3 sm:p-4 md:p-6 border-b animate-fade-in"
            style="border-color: rgba(40, 170, 106, 0.2);">
         <div class="text-center animate-bounce-subtle">
           <h2 class="text-fluid-base sm:text-fluid-lg md:text-xl font-bold text-black dark:text-white mb-1 font-brand">{{ translationService.translate('menu.title') }}</h2>
@@ -22,7 +22,7 @@ import { ContentModalService, OpenContentModalType } from '../services/content-m
       </div>
 
       <!-- Menu Content -->
-      <div class="p-3 sm:p-4 md:p-6 flex-1 overflow-y-auto">
+      <div class="p-3 sm:p-4 md:p-6 flex-1 overflow-y-auto min-h-0">
         <!-- Navigation Links with Modals -->
         <nav>
           <ul class="space-y-2 sm:space-y-3 md:space-y-4 text-fluid-sm sm:text-fluid-base">
@@ -204,7 +204,7 @@ import { ContentModalService, OpenContentModalType } from '../services/content-m
       </div>
 
       <!-- Menu Footer -->
-      <div class="p-3 sm:p-4 md:p-6 bg-gradient-to-t from-gray-100/90 to-transparent dark:from-gray-800/90 backdrop-blur-md border-t"
+      <div class="shrink-0 p-3 sm:p-4 md:p-6 bg-gradient-to-t from-gray-100/90 to-transparent dark:from-gray-800/90 backdrop-blur-md border-t"
            style="border-color: rgba(40, 170, 106, 0.2);">
 
         <!-- Social Links -->

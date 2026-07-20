@@ -116,10 +116,10 @@ import { AccessibilityService } from './services/accessibility.service';
             <p class="text-fluid-lg sm:text-fluid-xl md:text-2xl lg:text-3xl text-gray-700 dark:text-gray-300 font-hack font-medium">
               {{ translationService.translate('brand.subtitle') }}
             </p>
-            <p class="text-fluid-base sm:text-fluid-lg md:text-xl lg:text-2xl text-caricax-green dark:text-caricax-green font-hack font-semibold">
+            <p class="text-fluid-base sm:text-fluid-lg md:text-xl lg:text-2xl text-caricax-green dark:text-caricax-green font-hack font-semibold text-center">
               {{ translationService.translate('brand.slogan') }}
             </p>
-            <p class="text-fluid-sm sm:text-fluid-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-400 font-hack leading-relaxed animate-fade-in" style="animation-delay: 1.6s;">
+            <p class="text-fluid-sm sm:text-fluid-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-400 font-hack leading-relaxed text-justify sm:text-justify animate-fade-in" style="animation-delay: 1.6s;">
               {{ translationService.translate('brand.description') }}
             </p>
           </div>
@@ -142,20 +142,23 @@ import { AccessibilityService } from './services/accessibility.service';
         </div>
       </div>
 
-      <!-- Footer Profissional — responsive stack on mobile -->
-      <footer class="mt-12 sm:mt-16 md:mt-24 border-t border-gray-200 dark:border-gray-800/60 pt-8 md:pt-12 pb-8 md:pb-12 w-full mx-auto transition-colors duration-300 relative z-20">
-        <!-- Domain migration notice -->
-        <div class="responsive-pad mb-6 pb-4 border-b border-gray-200 dark:border-gray-800/40 text-fluid-xs text-gray-400 dark:text-gray-500 text-center">
-          {{ translationService.translate('footer.domain_migration') }}
-        </div>
-        <div class="responsive-pad grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 animate-fade-in max-w-5xl xl:max-w-6xl mx-auto items-start" style="animation-delay: 2s;">
+      <!-- Domain migration — linha decorativa entre conteúdo e footer -->
+      <div class="flex items-center gap-4 max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-10 sm:my-14 lg:my-18">
+        <div class="flex-1 h-px bg-gray-200 dark:bg-gray-800/40"></div>
+        <span class="text-fluid-xs text-gray-400 dark:text-gray-500 shrink-0 whitespace-nowrap">{{ translationService.translate('footer.domain_migration') }}</span>
+        <div class="flex-1 h-px bg-gray-200 dark:bg-gray-800/40"></div>
+      </div>
+
+      <!-- Footer Profissional — 3 colunas iguais, espaçamento consistente -->
+      <footer class="pb-12 sm:pb-16 lg:pb-20 pt-0 w-full mx-auto transition-colors duration-300 relative z-20">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 md:gap-12 lg:gap-14 animate-fade-in max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto items-start px-4 sm:px-6 lg:px-8" style="animation-delay: 2s;">
           <!-- Logo & Rights -->
-          <div class="flex flex-col gap-4 min-w-0 text-left sm:col-span-2 lg:col-span-1">
+          <div class="flex flex-col gap-3 min-w-0 text-left">
             <div class="flex items-center gap-3">
               <img src="new-caricax-logo.png" alt="CARICAX Logo" class="w-8 h-8 md:w-10 md:h-10 object-contain shrink-0" style="filter: drop-shadow(0 0 5px rgba(40, 170, 106, 0.4));" onerror="this.src='new-caricax-logo.ico'; this.onerror=null;">
               <span class="text-fluid-xl md:text-2xl font-brand font-bold text-transparent bg-gradient-to-r from-caricax-orange to-caricax-green bg-clip-text leading-none tracking-wide">CARICAX</span>
             </div>
-            <p class="text-fluid-xs sm:text-fluid-sm text-gray-500 dark:text-gray-400 leading-relaxed max-w-xs">
+            <p class="text-fluid-xs sm:text-fluid-sm text-gray-500 dark:text-gray-400 leading-relaxed">
               2024-{{ currentYear }} {{ translationService.translate('footer.company') }}. {{ translationService.translate('footer.location') }}.
             </p>
             <div class="text-fluid-xs sm:text-fluid-sm text-gray-500 dark:text-gray-400 leading-relaxed">
@@ -165,11 +168,11 @@ import { AccessibilityService } from './services/accessibility.service';
               </button>.
             </div>
           </div>
-          
+
           <!-- Legal Links -->
           <div class="flex flex-col gap-3 min-w-0 text-left">
             <h3 class="text-fluid-xs sm:text-fluid-sm font-brand font-semibold text-gray-800 dark:text-gray-200 uppercase tracking-wider">{{ translationService.translate('footer.link.compliance') }}</h3>
-            <ul class="space-y-2 text-fluid-xs sm:text-fluid-sm text-gray-500 dark:text-gray-400">
+            <ul class="space-y-2.5 text-fluid-xs sm:text-fluid-sm text-gray-500 dark:text-gray-400">
               <li><button (click)="contentModalService.openModal('legal-privacy')" class="block text-left leading-relaxed hover:text-caricax-green transition-colors">{{ translationService.translate('footer.link.privacy') }}</button></li>
               <li><button (click)="contentModalService.openModal('legal-terms')" class="block text-left leading-relaxed hover:text-caricax-green transition-colors">{{ translationService.translate('footer.link.terms') }}</button></li>
               <li><button (click)="contentModalService.openModal('legal-cookies')" class="block text-left leading-relaxed hover:text-caricax-green transition-colors">{{ translationService.translate('footer.link.cookies') }}</button></li>
@@ -177,8 +180,8 @@ import { AccessibilityService } from './services/accessibility.service';
               <li><button (click)="contentModalService.openModal('accessibility')" class="block text-left leading-relaxed hover:text-caricax-green transition-colors">{{ translationService.translate('footer.link.accessibility') }}</button></li>
             </ul>
           </div>
-          
-          <!-- Contact -->
+
+          <!-- Contact + Community Support -->
           <div class="flex flex-col gap-3 min-w-0 text-left">
             <h3 class="text-fluid-xs sm:text-fluid-sm font-brand font-semibold text-gray-800 dark:text-gray-200 uppercase tracking-wider">{{ translationService.translate('menu.contact') }}</h3>
             <div class="text-fluid-xs sm:text-fluid-sm text-gray-500 dark:text-gray-400 leading-relaxed">
@@ -248,6 +251,11 @@ export class App implements OnInit {
   }
 
   onSupport(): void {
+    const lang = this.translationService.currentLanguage().code;
+    if (lang === 'pt') {
+      this.contentModalService.openModal('pix');
+      return;
+    }
     document.getElementById('community-support')?.scrollIntoView({
       behavior: 'smooth',
       block: 'start'

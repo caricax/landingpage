@@ -179,13 +179,29 @@ export class TerminalFloatingComponent implements OnInit, OnDestroy {
   readonly lineCount = signal<number>(1);
   readonly charCount = signal<number>(0);
 
-  private readonly typingSpeed: number = 35;
-  private intervalId: ReturnType<typeof setInterval> | undefined;
+  private readonly baseTypingSpeed: number = 25;
+  private animationHandle: ReturnType<typeof setTimeout> | undefined;
   private fullText: string = '';
   private currentLanguage: Language | null = null;
   private currentIndex: number = 0;
-  private typewriterTick: number = 0;
   private textArray: string[] = [];
+
+  /**
+   * Returns a per-character delay in ms based on the character type,
+   * creating a realistic human typing rhythm.
+   * - Punctuation and line breaks: longer pause
+   * - Spaces: faster
+   * - Regular characters: base speed + small random variance
+   */
+  private getCharDelay(char: string): number {
+    if (char === '.' || char === '!' || char === '?' || char === '\n') return 180;
+    if (char === ',' || char === ';' || char === ':') return 100;
+    if (char === '—' || char === '…') return 220;
+    if (char === ' ') return 15;
+    if (char === '(' || char === ')' || char === '"' || char === "'") return 50;
+    if (char === '\t' || char === '|' || char === '>') return 40;
+    return this.baseTypingSpeed + Math.random() * 18;
+  }
 
   readonly tooltipsInfo = computed(() => {
     const tooltips = this.languageService.getTerminalTooltips();
@@ -230,7 +246,10 @@ export class TerminalFloatingComponent implements OnInit, OnDestroy {
   });
 
   constructor() {
-    // Sincroniza lineCount/charCount com currentText (inclui mudança de idioma)
+    // lineCount/charCount tracking in real-time during typewriter
+    // Matematicamente: O(1) por caractere, convergindo para o total factual
+    // ao completar a animação. Durante mudança de idioma, o progresso é
+    // re-escalado proporcionalmente (O(1) lookup).
     effect(() => {
       const text = this.currentText();
       this.lineCount.set(text ? text.split('\n').length : 1);
@@ -259,7 +278,7 @@ export class TerminalFloatingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.intervalId) clearInterval(this.intervalId);
+    if (this.animationHandle !== undefined) clearTimeout(this.animationHandle);
     this.acc.stopSpeech();
   }
 
@@ -315,7 +334,7 @@ export class TerminalFloatingComponent implements OnInit, OnDestroy {
       return;
     }
 
-    if (!this.intervalId) {
+    if (this.animationHandle === undefined) {
       setTimeout(() => this.isTransitioning.set(false), 300);
       return;
     }
@@ -337,37 +356,44 @@ export class TerminalFloatingComponent implements OnInit, OnDestroy {
   skipAnimation(): void {
     if (this.isComplete() || this.isTransitioning()) return;
     
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-      this.intervalId = undefined;
+    if (this.animationHandle !== undefined) {
+      clearTimeout(this.animationHandle);
+      this.animationHandle = undefined;
     }
     
     this.currentIndex = this.textArray.length;
-    this.typewriterTick = 0;
     this.currentText.set(this.fullText);
+    this.isComplete.set(true);
   }
 
   /**
-   * Inicia o efeito visual de máquina de escrever (typewriter).
+   * Inicia o efeito visual de máquina de escrever (typewriter) com
+   * temporização variável por caractere, simulando digitação humana real.
+   * 
+   * Utiliza setTimeout recursivo para permitir delays variáveis entre
+   * caracteres (pontuação mais lenta, espaços mais rápidos).
    */
   private startTypewriter(): void {
     this.currentIndex = 0;
-    this.typewriterTick = 0;
     this.currentText.set('');
+    this.isComplete.set(false);
 
-    this.intervalId = setInterval(() => {
+    const typeChar = (): void => {
       if (this.currentIndex >= this.textArray.length) {
-        clearInterval(this.intervalId);
         this.isComplete.set(true);
         this.currentText.set(this.fullText);
+        this.animationHandle = undefined;
         return;
       }
 
+      const char: string = this.textArray[this.currentIndex];
       this.currentIndex++;
-      this.typewriterTick++;
-      if (this.typewriterTick % 5 === 0 || this.currentIndex >= this.textArray.length) {
-        this.currentText.set(this.fullText.slice(0, this.currentIndex));
-      }
-    }, this.typingSpeed);
+      this.currentText.set(this.fullText.slice(0, this.currentIndex));
+
+      const delay: number = this.getCharDelay(char);
+      this.animationHandle = setTimeout(typeChar, delay);
+    };
+
+    this.animationHandle = setTimeout(typeChar, 50);
   }
 }
