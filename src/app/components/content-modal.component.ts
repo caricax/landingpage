@@ -77,24 +77,40 @@ type ModalTitleTranslationKey =
           <div class="overflow-y-auto max-h-[calc(90dvh-80px)]">
             @switch (contentModalService.activeModal()) {
               @case ('branding-guidelines') {
-                <div class="p-0">
-                  <app-branding-guidelines [inModal]="true"></app-branding-guidelines>
-                </div>
+                @defer (when contentModalService.activeModal() === 'branding-guidelines') {
+                  <div class="p-0">
+                    <app-branding-guidelines [inModal]="true"></app-branding-guidelines>
+                  </div>
+                } @placeholder {
+                  <div class="p-8 text-center text-gray-400">Carregando...</div>
+                }
               }
               @case ('services') {
-                <div class="p-0">
-                  <app-servicos></app-servicos>
-                </div>
+                @defer (when contentModalService.activeModal() === 'services') {
+                  <div class="p-0">
+                    <app-servicos></app-servicos>
+                  </div>
+                } @placeholder {
+                  <div class="p-8 text-center text-gray-400">Carregando...</div>
+                }
               }
               @case ('labut-ai') {
-                <div class="p-0">
-                  <app-labut-ai></app-labut-ai>
-                </div>
+                @defer (when contentModalService.activeModal() === 'labut-ai') {
+                  <div class="p-0">
+                    <app-labut-ai></app-labut-ai>
+                  </div>
+                } @placeholder {
+                  <div class="p-8 text-center text-gray-400">Carregando...</div>
+                }
               }
               @case ('rescisao-facil') {
-                <div class="p-0">
-                  <app-rescisao-facil></app-rescisao-facil>
-                </div>
+                @defer (when contentModalService.activeModal() === 'rescisao-facil') {
+                  <div class="p-0">
+                    <app-rescisao-facil></app-rescisao-facil>
+                  </div>
+                } @placeholder {
+                  <div class="p-8 text-center text-gray-400">Carregando...</div>
+                }
               }
               @case ('legal-compliance') {
                 <div class="p-4 sm:p-6 md:p-8">
